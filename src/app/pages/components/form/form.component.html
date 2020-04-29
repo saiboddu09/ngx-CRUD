@@ -1,0 +1,22 @@
+<div class="card mt-3">
+    <div class="card-body">
+        <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="col-md-4">Title</label>
+                <input type="title" class="form-control" formControlName="title" #title />
+                <div *ngIf="todoForm.controls['title'].invalid && (todoForm.controls['title'].dirty || todoForm.controls['title'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="todoForm.controls['title'].errors.required">
+                        Title is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mr-1"
+                    [disabled]="todoForm.pristine || todoForm.invalid">Submit
+                </button>
+            </div>
+        </form>
+        [note: Add Data work logically here It's not perform with API. Only Get, Edit and Delete action on Data work based on API call.]
+    </div>
+</div>

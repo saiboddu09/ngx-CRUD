@@ -1,0 +1,28 @@
+<div class="col">
+    <div *ngIf="todos">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of listData; let i = index" [attr.data-index]="i">
+                    <td *ngIf="!todo.logical">{{ todo.title }}</td>
+                    <td *ngIf="todo.logical">{{ todo.title }} [note: Logical Data]</td>
+                    <td *ngIf="!todo.logical">
+                        <button class="btn btn-primary" (click)="editTodo(todo)">Edit</button>
+                    </td>
+                    <td *ngIf="!todo.logical">
+                        <button class="btn btn-primary" (click)="deleteTodo(i)">Delete</button>
+                    </td>
+                    <td colspan="2" *ngIf="todo.logical">
+                        <button class="btn btn-primary" disabled="true">No Action</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
